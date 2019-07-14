@@ -1,0 +1,71 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b81b78331814226ca1846692d110be41c0c8dc31fc0c43ba1d4b23a85b8081a0
+
+name:           propositional
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/reidswan/propositional#readme>
+homepage:       https://github.com/reidswan/propositional#readme
+bug-reports:    https://github.com/reidswan/propositional/issues
+author:         Reid Swan
+maintainer:     reidswan@outlook.com
+copyright:      2019 Reid Swan
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/reidswan/propositional
+
+library
+  exposed-modules:
+      Propositional.Engine
+      Propositional.Parser
+      Propositional.AST
+      Propositional.Parser.Normal
+      Propositional.IO.Reader
+      Propositional.IO.Writer
+  other-modules:
+      Paths_propositional
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , containers >= 0.5 && <0.6
+    , parsec >= 3.1
+  default-language: Haskell2010
+
+executable propositional-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_propositional
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , propositional
+  default-language: Haskell2010
+
+test-suite propositional-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_propositional
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , propositional
+    , hspec
+    , QuickCheck
+  default-language: Haskell2010
